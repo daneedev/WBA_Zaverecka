@@ -4,7 +4,7 @@ body {
     font-family: "Rubik", serif;
     height: 100%;
     min-height: 100vh;
-    background-image: url("/assets/img/background.svg");
+    background-image: url("../img/background.svg");
     background-size: cover;
     display: flex;
     flex-direction: column;
