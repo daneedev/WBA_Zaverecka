@@ -12,7 +12,8 @@
 </p>
 
 ## 📃 O stránce
-**Jak začít s TypeScriptem?** je webová stránka, která je určená jak pro začátečníky v backendu, tak i pro pokročilé, kteří již umí JavaScript
+- **Jak začít s TypeScriptem?** je webová stránka, která je určená jak pro začátečníky v backendu, tak i pro pokročilé, kteří již umí JavaScript
+- [Design stránky](https://www.figma.com/design/Tu7aJjw64ErLP2HueuIpyi/JZT_Design?node-id=0-1&t=uiuKRjLTRbQajZEI-1)
 
 ## 🚦 Funkce
 *Bude doplňeno*
