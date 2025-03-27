@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="rubik-900">
+<body>
     <nav>
+        <a class="hamburger-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></a>
+
         <img src="assets/img/logo.svg" alt="TypeScript logo" >
         <h1>Jak začít s TypeScriptem?</h1>
-        <a href="#">Pro začátečníky</a>
-        <a href="#">Pro pokročilé</a>
-        <a href="#">O stránce</a>
+        <div class="menu">
+            <a href="#">Pro začátečníky</a>
+            <a href="#">Pro pokročilé</a>
+            <a href="#">O stránce</a>
+        </div>
+        <div class="hamburger-menu">
+            <a href="#">Pro začátečníky</a>
+            <a href="#">Pro pokročilé</a>
+            <a href="#">O stránce</a>
+        </div>
     </nav>
     <main>
         <article id="intro">
@@ -32,5 +41,6 @@
     <footer>
 
     </footer>
+    <script src="assets/js/hamburgerMenu.js"></script>
 </body>
 </html>
