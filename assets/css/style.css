@@ -28,31 +28,35 @@ nav img {
     width: 50px;
     height: auto;
 }
-nav h1 {
-    font-size: 20px;
-    color: #fff;
-    font-weight: 900;
-}
-nav a {
+
+.menu a, .hamburger-menu a, nav a {
     color: #F2FDFF;
     text-decoration: none;
     font-size: 18px;
+}
+
+nav h1 a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 900;
 }
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
-#intro {
-    width: 50%;
+#container {
+    width: 20%;
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-#intro img {
+#container img {
     width: 200px;
     height: auto;
 }
@@ -70,7 +74,7 @@ main {
     font-weight: 900;
 }
 
-#intro-text h2 {
+#intro-text p {
     font-size: 20px;
     color: #818479;
 }
@@ -87,6 +91,7 @@ main {
     border-radius: 10px;
     padding: 15px;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .blue {
@@ -112,14 +117,98 @@ main {
     gap: 10px;
 }
 
+#chapter-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 20%;
+}
+.chapter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.chapter-header h1 {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.chapter-level {
+    padding: 8px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.chapter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chapter-section {
+    border-bottom: 1px solid #7b7b7b;
+    padding-bottom: 10px;
+}
+
+.chapter-section:last-child {
+    border-bottom: none;
+}
+
+.chapter-section h2 {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.chapter-content p,li {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.chapter-section code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #fff;
+    
+}
+
+.chapter-section pre {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 15px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.chapter-level.beginner {
+    background-color: #007ACC;
+}
+
+.chapter-level.advanced {
+    background-color: #c6b218;
+}
+
 @media (max-width: 1200px) {
-    #intro {
+    #container {
         width: 70%;
     }
 }
 
 @media (max-width: 850px) {
-    #intro {
+    #container {
         width: 90%;
     }
     .hamburger-btn {
@@ -147,5 +236,23 @@ main {
     }
     .btn {
         width: 50%;
+    }
+    #intro-text h1 {
+        font-size: 25px;
+    }
+    #intro-text p {
+        font-size: 18px;
+    }
+    #intro img {
+        width: 150px;
+    }
+    .chapter-navigation {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .chapter-navigation a {
+        width: 100%;
+        box-sizing: border-box;
     }
 }
