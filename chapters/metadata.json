@@ -1,0 +1,12 @@
+{
+  "chapters": [
+    {
+      "id": "basics",
+      "title": "Testovací kapitola",
+      "level": "beginner",
+      "description": "Toto je testovací kapitola",
+      "prev": null,
+      "next": null
+    }
+  ]
+} 
