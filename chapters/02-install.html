@@ -1,0 +1,16 @@
+<section class="chapter-section">
+    <p>Nejdříve si musíme nainstalovat TypeScript globálně pomocí npm (Node Package Manager):</p>
+    <pre><code>npm install -g typescript</code></pre>
+    <p>Po instalaci ověřte, že TypeScript je správně nainstalován příkazem:</p>
+    <pre><code>tsc --version</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Vytvoření prvního TypeScript projektu</h2>
+    <p>Pro vytvoření nového TypeScript projektu použijeme příkaz:</p>
+    <pre><code>tsc --init</code></pre>
+    <p>Tento příkaz vygeneruje soubor <code>tsconfig.json</code>, který slouží k nastavení konfigurace TypeScript kompilátoru.</p>
+    <p>Poté vytvoříme soubor <code>index.ts</code> a napíšeme náš první TypeScript kód:</p>
+    <pre><code>let pozdrav: string = 'Ahoj, TypeScript!';
+console.log(pozdrav);</code></pre>
+</section>

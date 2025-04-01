@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         if (level === "beginner") {
-            loadChapter("basics");
+            loadChapter("01-basics");
         } else if (level === "advanced") {
             loadChapter("advanced");
         }

@@ -1,11 +1,27 @@
 {
   "chapters": [
     {
-      "id": "basics",
-      "title": "Testovací kapitola",
+      "id": "01-basics",
+      "title": "Úvod do TypeScriptu",
       "level": "beginner",
-      "description": "Toto je testovací kapitola",
+      "description": "V této kapitole se dozvíte, jak začít s TypeScriptem a jakým způsobem se liší od JavaScriptu.",
       "prev": null,
+      "next": "02-install"
+    },
+    {
+      "id": "02-install",
+      "title": "Instalace TypeScriptu",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte, jak nainstalovat TypeScript a jak vytvořit první TypeScript soubor.",
+      "prev": "01-basics",
+      "next": "03-types"
+    },
+    {
+      "id": "03-types",
+      "title": "Typy v TypeScriptu",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte, jak používat různé typy v TypeScriptu.",
+      "prev": "02-install",
       "next": null
     }
   ]
