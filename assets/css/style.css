@@ -50,7 +50,7 @@ main {
 }
 
 #container {
-    width: 20%;
+    max-width: 800px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -201,16 +201,7 @@ main {
     background-color: #c6b218;
 }
 
-@media (max-width: 1200px) {
-    #container {
-        width: 70%;
-    }
-}
-
 @media (max-width: 850px) {
-    #container {
-        width: 90%;
-    }
     .hamburger-btn {
         display: block;
         font-size: 30px;
@@ -223,6 +214,7 @@ main {
         flex-direction: column;
         gap: 10px;
         padding: 20px;
+        width: 100%;
     }
     .menu {
         display: none;
@@ -243,7 +235,7 @@ main {
     #intro-text p {
         font-size: 18px;
     }
-    #intro img {
+    #container img {
         width: 150px;
     }
     .chapter-navigation {
