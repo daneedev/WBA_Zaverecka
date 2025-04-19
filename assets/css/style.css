@@ -332,3 +332,8 @@ main {
         max-width: 80%;
     }
 }
+@media (max-width: 500px) {
+    .chapter-selection ul {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
