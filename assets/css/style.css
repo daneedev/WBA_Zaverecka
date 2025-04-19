@@ -117,7 +117,7 @@ main {
     gap: 10px;
 }
 
-#chapter-container {
+.chapter-container {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 10px;
@@ -130,7 +130,7 @@ main {
     gap: 10px;
 }
 
-.chapter-header h1 {
+.chapter-header h1, .chapter-layout h1 {
     font-size: 24px;
     color: #fff;
     font-weight: 700;
@@ -208,6 +208,51 @@ main {
     background-color: #c6b218;
 }
 
+.chapter-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.chapter-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 20%;
+}
+
+.chapter-selection ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.chapter-selection a {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chapter-selection a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 @media (max-width: 850px) {
     .hamburger-btn {
         display: block;
@@ -268,7 +313,7 @@ main {
         width: 100%;
         box-sizing: border-box;
     }
-    #chapter-container {
+    .chapter-container {
         max-width: 80%;
     }
 }

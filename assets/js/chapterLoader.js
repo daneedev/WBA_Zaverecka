@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function loadChapter(chapterName) {
     try {
-        const container = document.getElementById('chapter-container');
+        const container = document.querySelector('.chapter-container');
+        const chapterList = document.querySelector('.chapter-list');
         
         const response = await fetch(`chapters/${chapterName}.html`);
         
@@ -33,6 +34,20 @@ async function loadChapter(chapterName) {
         }
         
         const metadata = await metaResponse.json();
+
+        chapterList.innerHTML = "";
+        metadata.chapters.forEach(chapter => {
+            const chapterItem = document.createElement('a');
+            chapterItem.onclick = loadChapter.bind(null, chapter.id);
+            if (chapter.level === 'beginner') {
+                chapterItem.innerHTML += `<div class="chapter-level beginner">Začátečník</div>`;
+            } else if (chapter.level === 'advanced') {
+                chapterItem.innerHTML += `<div class="chapter-level advanced">Pokročilý</div>`;
+            }
+            chapterItem.innerHTML += `${chapter.title}`;
+            chapterList.appendChild(chapterItem);
+        })
+
         const chapterMeta = metadata.chapters.find(c => c.id === chapterName);
         
         if (!chapterMeta) {
