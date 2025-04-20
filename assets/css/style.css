@@ -68,7 +68,7 @@ main {
     gap: 10px;
 }
 
-#intro-text h1 {
+#intro-text h1, .about-intro h1 {
     font-size: 30px;
     color: #fff;
     font-weight: 900;
@@ -251,6 +251,80 @@ main {
 }
 .chapter-selection a:hover {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.about-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.about-intro p {
+    font-size: 20px;
+    color: #ffff;
+}
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.card-blue:hover {
+    box-shadow: #007ACC 0px 0px 20px 5px;
+}
+.card-yellow:hover {
+    box-shadow: #c6b218 0px 0px 20px 5px;
+}
+.card-blue:hover .card-icon {
+    color: #007ACC;
+}
+.card-yellow:hover .card-icon {
+    color: #c6b218;
+}
+
+.card-title {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+}
+.card-description {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.card-icon {
+    font-size: 50px;
+    color: #fff;
+    transition-duration: 0.4s;
 }
 
 @media (max-width: 850px) {
