@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
+@import url("./font.css");
 body {
     font-family: "Rubik", serif;
     height: 100%;
@@ -12,7 +12,7 @@ body {
     justify-content: space-between;
 }
 
-nav {
+.navbar {
     width: 100%;
     display: flex;
     align-items: center;
@@ -24,18 +24,18 @@ nav {
     position: relative;
 }
 
-nav img {
+.navbar img {
     width: 50px;
     height: auto;
 }
 
-.menu a, .hamburger-menu a, nav a {
+.menu a, .hamburger-menu a, .navbar a {
     color: #F2FDFF;
     text-decoration: none;
     font-size: 18px;
 }
 
-nav h1 a {
+.navbar h1 a {
     text-decoration: none;
     font-size: 20px;
     color: #fff;
@@ -46,7 +46,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
 #container {
@@ -68,9 +67,11 @@ main {
     gap: 10px;
 }
 
-#intro-text h1, .about-intro h1 {
+#intro-text h1, .about-intro h1, .cards-container h2 {
     font-size: 30px;
-    color: #fff;
+    background: linear-gradient(to bottom, #8dbedf 0%, #51a9e4 45%, #007ACC 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: 900;
 }
 
@@ -226,7 +227,7 @@ main {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 10px;
-    width: 20%;
+    min-width: 20%;
 }
 
 .chapter-selection ul {
@@ -258,12 +259,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 20px;
+    gap: 5px;
     max-width: 800px;
 }
 
-.about-intro {
+.about-intro, .cards-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -277,8 +277,10 @@ main {
     color: #ffff;
 }
 .about-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
     gap: 10px;
     width: 100%;
     max-width: 800px;
@@ -295,6 +297,7 @@ main {
     gap: 10px;
     transition-duration: 0.4s;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .card-blue:hover {
@@ -302,6 +305,7 @@ main {
 }
 .card-yellow:hover {
     box-shadow: #c6b218 0px 0px 20px 5px;
+    color: #c6b218;
 }
 .card-blue:hover .card-icon {
     color: #007ACC;
@@ -309,6 +313,31 @@ main {
 .card-yellow:hover .card-icon {
     color: #c6b218;
 }
+.card-html:hover {
+    box-shadow: #E34C26 0px 0px 20px 5px;
+}
+.card-html:hover .card-icon {
+    color: #E34C26;
+}
+.card-css:hover {
+    box-shadow: #1572B6 0px 0px 20px 5px;
+}
+.card-css:hover .card-icon {
+    color: #1572B6;
+}
+.card-js:hover {
+    box-shadow: #F7DF1E 0px 0px 20px 5px;
+}
+.card-js:hover .card-icon {
+    color: #F7DF1E;
+}
+.card-json:hover {
+    box-shadow: #7b7b7b 0px 0px 20px 5px;
+}
+.card-json:hover .card-icon {
+    color: #7b7b7b;
+}
+
 
 .card-title {
     font-size: 20px;
@@ -325,6 +354,44 @@ main {
     font-size: 50px;
     color: #fff;
     transition-duration: 0.4s;
+}
+
+.cards-container h2 {
+    font-size: 25px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    max-width: 800px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.3s;
+}
+footer a:hover {
+    color: #007ACC;
+}
+footer p {
+    color: #fff;
+    font-size: 16px;
 }
 
 @media (max-width: 850px) {

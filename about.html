@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
         <a href="javascript:void(0);" class="hamburger-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></a>
         <img src="assets/img/logo.svg" alt="TypeScript logo" >
         <h1><a href="index.html">Jak začít s TypeScriptem?</a></h1>
@@ -28,26 +28,46 @@
     </nav>
     <main>
         <article class="about-container">
-            <section class="about-intro">
-                <h1>O stránce</h1>
+            <article class="about-intro">
+                <h1>O STRÁNCE</h1>
                 <p>Tato stránka je určena pro všechny, kteří se chtějí naučit TypeScript. Obsahuje kapitoly jak pro začátečníky, tak i pro pokročilé uživatele, kteří již mají zkušenosti s JavaScriptem. Každá kapitola je zaměřena na konkrétní témata.</p>
-            </section>
-            <section class="about-cards">
-                <div class="card card-blue">
-                    <p class="card-icon"><i class="fa-solid fa-code"></i></p>
-                    <p class="card-title">Pro začátečníky</p>
-                    <p class="card-description">Kapitoly zaměřené na základní koncepty TypeScriptu, jako jsou typy, funkce a objekty.</p>
-                </div>
-                <div class="card card-yellow">
-                    <p class="card-icon"><i class="fa-solid fa-laptop-code"></i></p>
-                    <p class="card-title">Pro pokročilé</p>
-                    <p class="card-description">Kapitoly zaměřené na pokročilé koncepty TypeScriptu, jako jsou generické typy, pokročilé typy a další.</p>
-                </div>
-            </section>
+            </article>
+            <article class="cards-container">
+                <h2>Pro koho?</h2>
+                <section class="about-cards">
+                    <a href="chapters.html?level=beginner" class="card card-blue">
+                        <p class="card-icon"><i class="fa-solid fa-code"></i></p>
+                        <p class="card-title">Pro začátečníky</p>
+                        <p class="card-description">Kapitoly zaměřené na základní koncepty TypeScriptu, jako jsou typy, funkce a objekty.</p>
+                    </a>
+                    <a href="chapters.html?level=advanced" class="card card-yellow">
+                        <p class="card-icon"><i class="fa-solid fa-laptop-code"></i></p>
+                        <p class="card-title">Pro pokročilé</p>
+                        <p class="card-description">Kapitoly zaměřené pro lidi, kteří již pracovali a mají zkušenosti s JavaScriptem.</p>
+                    </a>
+                </section>
+            </article>
+            <article class="cards-container">
+                <h2>Použité technologie</h2>
+                <section class="about-cards">
+                    <div class="card card-html" title="HTML5">
+                        <p class="card-icon"><i class="fa-brands fa-html5"></i></p>
+                    </div>
+                    <div class="card card-css" title="CSS3">
+                        <p class="card-icon"><i class="fa-brands fa-css3-alt"></i></p>
+                    </div>
+                    <div class="card card-js" title="JavaScript">
+                        <p class="card-icon"><i class="fa-brands fa-js"></i></p>
+                    </div>
+                    <div class="card card-json" title="JSON">
+                        <p class="card-icon"><i class="fa-solid fa-file-code"></i></p>
+                    </div>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
-
+        <p>&copy; 2025 Jak začít s TypeScriptem? | Stránky vytvořil <a href="https://danee.dev">Daniel Kroufek</a></p>
     </footer>
     <script src="assets/js/hamburgerMenu.js"></script>
 </body>
