@@ -23,6 +23,30 @@
       "description": "V této kapitole se dozvíte, jak používat různé typy v TypeScriptu.",
       "prev": "02-install",
       "next": null
+    },
+    {
+      "id": "101-migration",
+      "title": "Migrace z JavaScriptu na TypeScript",
+      "level": "advanced",
+      "description": "V této kapitole se dozvíte, jak migrovat existující JavaScriptový projekt na TypeScript.",
+      "prev": null,
+      "next": "102-basics"
+    },
+    {
+      "id": "102-basics",
+      "title": "Než budete pokračovat",
+      "level": "advanced",
+      "description": "V této kapitole se dozvíte, proč si prostudovat základní kapitoly.",
+      "prev": "101-migration",
+      "next": "103-customtypes"
+    },
+    {
+      "id": "103-customtypes",
+      "title": "Vytváření vlastních typů",
+      "level": "advanced",
+      "description": "V této kapitole se dozvíte, jak vytvářet vlastní typy v TypeScriptu.",
+      "prev": "102-basics",
+      "next": null
     }
   ]
 } 

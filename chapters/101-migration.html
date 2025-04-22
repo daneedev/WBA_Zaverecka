@@ -1,0 +1,45 @@
+<section class="chapter-section">
+    <h2>Co je <code>tsconfig.json</code>?</h2>
+    <p><code>tsconfig.json</code> je konfigurační soubor pro TypeScript kompilátor. Umožňuje ti nastavit, jak má TypeScript překládat kód, které soubory má brát v potaz a jaké pravidla má uplatňovat. Tento soubor se automaticky vytvoří příkazem:</p>
+    <pre><code>tsc --init</code></pre>
+    <p>Typický obsah vypadá následovně:</p>
+    <pre><code>{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Důležité volby v <code>compilerOptions</code></h2>
+    <ul>
+        <li><strong><code>strict</code></strong>: Zapne přísné typování – doporučeno pro maximální bezpečnost.</li>
+        <li><strong><code>esModuleInterop</code></strong>: Umožňuje kombinovat importy z CommonJS a ES modulů.</li>
+        <li><strong><code>target</code></strong>: Určuje verzi JavaScriptu, do které se má kód přeložit (např. <code>ES6</code>).</li>
+        <li><strong><code>module</code></strong>: Nastavuje modulový systém (např. <code>commonjs</code> pro Node.js).</li>
+    </ul>
+</section>
+
+<section class="chapter-section">
+    <h2>První kroky při migraci</h2>
+    <p>Začni přejmenováním souborů z <code>.js</code> na <code>.ts</code>. Můžeš také povolit podporu JavaScriptových souborů v projektu, což umožní postupnou migraci:</p>
+    <pre><code>{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true
+  },
+  "include": ["src/**/*"]
+}</code></pre>
+    <p>Veškeré typescript soubory je důležité ukládat do složky <code>/src</code>, které se pak zkompilujou na JavaScript ve složce <code>/dist</code></p>
+</section>
+
+<section class="chapter-section">
+    <h2>Postupné přidávání typů</h2>
+    <p>Nemusíš vše přepisovat najednou. Začni přidávat typy do nového nebo důležitého kódu. TypeScript ti pomůže odhalit chyby, i když část kódu zůstane dočasně v JavaScriptu.</p>
+</section>
+

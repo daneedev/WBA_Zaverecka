@@ -1,0 +1,53 @@
+<section class="chapter-section">
+    <h2>Vlastní typy (Type Aliases)</h2>
+    <p>Typové aliasy umožňují pojmenovat složitější typy, které se opakují, nebo zjednodušit čitelnost kódu:</p>
+    <pre><code>type Uzivatel = {
+  jmeno: string;
+  vek: number;
+  jeAdmin: boolean;
+};
+
+const admin: Uzivatel = {
+  jmeno: "Petr",
+  vek: 30,
+  jeAdmin: true
+};</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Unie a průniky typů</h2>
+    <p>Unie <code>|</code> umožňuje proměnné nabývat více typů:</p>
+    <pre><code>let id: string | number;
+id = "abc";
+id = 123;</code></pre>
+    <p>Průnik <code>&</code> kombinuje více typů do jednoho:</p>
+    <pre><code>type Osoba = { jmeno: string };
+type Pracovnik = { pozice: string };
+
+type Zamestnanec = Osoba & Pracovnik;
+
+const jan: Zamestnanec = {
+  jmeno: "Jan",
+  pozice: "Vývojář"
+};</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Literal typy</h2>
+    <p>Můžeš omezit hodnoty proměnných na konkrétní řetězce nebo čísla:</p>
+    <pre><code>type Stav = "aktivni" | "neaktivni" | "pozastaveny";
+
+let uzivatelStav: Stav = "aktivni";</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Výčty (Enums)</h2>
+    <p>Výčty umožňují definovat sadu pojmenovaných konstant:</p>
+    <pre><code>enum Role {
+  Uzivatel,
+  Admin,
+  SuperAdmin
+}
+
+let mojeRole: Role = Role.Admin;</code></pre>
+</section>
