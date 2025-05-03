@@ -22,6 +22,62 @@
       "level": "beginner",
       "description": "V této kapitole se dozvíte, jak používat různé typy v TypeScriptu.",
       "prev": "02-install",
+      "next": "04-operators-conditions"
+    },
+    {
+      "id": "04-operators-conditions",
+      "title": "Operátory a podmínky",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte o aritmetických a logických operátorech a o podmínkách v TypeScriptu.",
+      "prev": "03-types",
+      "next": "05-loops"
+    },
+    {
+      "id": "05-loops",
+      "title": "Cykly",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte, jak používat různé druhy cyklů v TypeScriptu pro opakované provádění kódu.",
+      "prev": "04-operators-conditions",
+      "next": "06-functions"
+    },
+    {
+      "id": "06-functions",
+      "title": "Funkce",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte, jak deklarovat a používat funkce v TypeScriptu včetně typování parametrů a návratových hodnot.",
+      "prev": "05-loops",
+      "next": "07-arrays-objects"
+    },
+    {
+      "id": "07-arrays-objects",
+      "title": "Pole a objekty",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte, jak pracovat s poli a objekty v TypeScriptu a jak je správně typovat.",
+      "prev": "06-functions",
+      "next": "08-classes"
+    },
+    {
+      "id": "08-classes",
+      "title": "Úvod do tříd",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte základy objektově orientovaného programování v TypeScriptu pomocí tříd.",
+      "prev": "07-arrays-objects",
+      "next": "09-debugging"
+    },
+    {
+      "id": "09-debugging",
+      "title": "Chyby a debugování",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte, jak číst typové chyby a jak efektivně debugovat TypeScriptový kód.",
+      "prev": "08-classes",
+      "next": "10-compilation"
+    },
+    {
+      "id": "10-compilation",
+      "title": "Kompilace a běh TypeScriptu",
+      "level": "beginner",
+      "description": "V této kapitole se dozvíte, jak nainstalovat a zkonfigurovat TypeScript, jak kompilovat TypeScriptový kód do JavaScriptu a jak ho spustit.",
+      "prev": "09-debugging",
       "next": null
     },
     {
@@ -34,19 +90,51 @@
     },
     {
       "id": "102-basics",
-      "title": "Než budete pokračovat",
+      "title": "Typový systém",
       "level": "advanced",
-      "description": "V této kapitole se dozvíte, proč si prostudovat základní kapitoly.",
+      "description": "V této kapitole se dozvíte o typovém systému TypeScriptu a jeho pokročilých možnostech.",
       "prev": "101-migration",
       "next": "103-customtypes"
     },
     {
       "id": "103-customtypes",
-      "title": "Vytváření vlastních typů",
+      "title": "Funkce s typy",
       "level": "advanced",
-      "description": "V této kapitole se dozvíte, jak vytvářet vlastní typy v TypeScriptu.",
+      "description": "V této kapitole se dozvíte, jak efektivně typovat funkce, jejich parametry a návratové hodnoty v TypeScriptu.",
       "prev": "102-basics",
+      "next": "104-objects"
+    },
+    {
+      "id": "104-objects",
+      "title": "Práce s objekty",
+      "level": "advanced",
+      "description": "V této kapitole se dozvíte o pokročilé práci s objekty v TypeScriptu, rozdílu mezi interface a type, a o rozšiřování typů.",
+      "prev": "103-customtypes",
+      "next": "105-arrays-tuples-enums"
+    },
+    {
+      "id": "105-arrays-tuples-enums",
+      "title": "Pole, Tuples, Enums",
+      "level": "advanced",
+      "description": "V této kapitole se dozvíte o práci s typovanými poli, n-ticemi a výčtovými typy v TypeScriptu.",
+      "prev": "104-objects",
+      "next": "106-type-guards"
+    },
+    {
+      "id": "106-type-guards",
+      "title": "Typová kontrola a ochrany",
+      "level": "advanced",
+      "description": "V této kapitole se dozvíte, jak používat typové strážce a predikáty pro bezpečnou práci s různými typy dat.",
+      "prev": "105-arrays-tuples-enums",
+      "next": "107-generics"
+    },
+    {
+      "id": "107-generics",
+      "title": "Generické typy (Generics)",
+      "level": "advanced",
+      "description": "V této kapitole se dozvíte o generických typech a jak je používat pro vytváření flexibilních a typově bezpečných funkcí a tříd.",
+      "prev": "106-type-guards",
       "next": null
     }
   ]
-} 
+}

@@ -1,0 +1,77 @@
+<section class="chapter-section">
+    <h2>Základy polí a jejich typování</h2>
+    <p>V TypeScriptu můžeme definovat typy prvků v polích, což přináší lepší typovou kontrolu a podporu vývojových nástrojů.</p>
+    <pre><code>// Definice typovaných polí
+let cisla: number[] = [1, 2, 3, 4, 5];
+let jmena: string[] = ["Anna", "Petr", "Jana"];
+let mixed: (string | number)[] = [1, "dva", 3, "čtyři"];
+
+// Alternativní syntaxe pomocí generického typu Array
+let barvy: Array<string> = ["červená", "zelená", "modrá"];
+
+// Metody polí s typovou kontrolou
+cisla.push(6);          // OK
+// cisla.push("sedm");  // Chyba: Argument of type 'string' is not assignable to parameter of type 'number'
+
+// Práce s typovanými poli
+let soucet: number = cisla.reduce((a, b) => a + b, 0);
+let dlouzkaJmen: number[] = jmena.map(jmeno => jmeno.length);</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Objekty a jejich typy</h2>
+    <p>TypeScript umožňuje přesně definovat strukturu objektů.</p>
+    <pre><code>// Definice typu objektu pomocí typové anotace
+let osoba: { jmeno: string; vek: number; email?: string } = {
+    jmeno: "Jan Novák",
+    vek: 30
+    // email je volitelný
+};
+
+// Přidání vlastnosti k objektu
+osoba.email = "jan@example.com";
+
+// Vytvoření více objektů stejného typu
+let zamestnanci: { jmeno: string; pozice: string; nastup: Date }[] = [
+    { jmeno: "Karel", pozice: "vývojář", nastup: new Date(2020, 1, 15) },
+    { jmeno: "Lucie", pozice: "designérka", nastup: new Date(2021, 4, 1) }
+];</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Úvod do interface</h2>
+    <p>Interface v TypeScriptu poskytuje způsob, jak definovat strukturu objektu, který lze používat na více místech.</p>
+    <pre><code>// Definice interface
+interface Uživatel {
+    id: number;
+    jmeno: string;
+    email: string;
+    jeAdmin?: boolean; // volitelná vlastnost
+}
+
+// Použití interface pro typování
+function vytvorUzivatele(jmeno: string, email: string): Uživatel {
+    return {
+        id: Math.floor(Math.random() * 1000),
+        jmeno,
+        email
+    };
+}
+
+let uzivatel1: Uživatel = vytvorUzivatele("Jana Nováková", "jana@example.com");
+console.log(uzivatel1);
+
+// Rozšíření interface
+interface Zaměstnanec extends Uživatel {
+    oddeleni: string;
+    nastoupil: Date;
+}
+
+let zamestnanec: Zaměstnanec = {
+    id: 1,
+    jmeno: "Pavel Svoboda",
+    email: "pavel@firma.cz",
+    oddeleni: "IT",
+    nastoupil: new Date(2022, 0, 10)
+};</code></pre>
+</section>

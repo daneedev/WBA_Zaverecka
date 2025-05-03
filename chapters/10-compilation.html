@@ -1,0 +1,57 @@
+<section class="chapter-section">
+    <h2>Instalace TypeScriptu</h2>
+    <p>Před použitím TypeScriptu je potřeba jej nainstalovat, nejčastěji pomocí npm (Node Package Manager).</p>
+    <pre><code>// Globální instalace
+// npm install -g typescript
+
+// Lokální instalace v projektu
+// npm init -y
+// npm install typescript --save-dev
+
+// Ověření instalace
+// tsc --version</code></pre>
+    <p>Po instalaci můžete vytvořit konfigurační soubor tsconfig.json pomocí příkazu:</p>
+    <pre><code>// tsc --init</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Kompilace (tsc) a spuštění v Node.js</h2>
+    <p>TypeScript soubory (.ts) je třeba zkompilovat do JavaScriptu pro spuštění v prohlížeči nebo Node.js.</p>
+    <pre><code>// Vytvoření TypeScript souboru hello.ts
+// Obsah souboru:
+// function pozdrav(jmeno: string): string {
+//     return `Ahoj, ${jmeno}!`;
+// }
+// console.log(pozdrav("světe"));
+
+// Kompilace jednoho souboru
+// tsc hello.ts
+// Výsledek: vytvoření hello.js
+
+// Spuštění výsledného JavaScript souboru
+// node hello.js
+
+// Kompilace všech souborů v projektu podle tsconfig.json
+// tsc
+
+// Kompilace a sledování změn (watch mode)
+// tsc --watch</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Konfigurace kompilátoru</h2>
+    <p>Nastavení TypeScript kompilátoru se provádí v souboru tsconfig.json.</p>
+    <pre><code>// Ukázka základního tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es2016",      // Verze JavaScriptu, do které kompilovat
+    "module": "commonjs",    // Systém modulů (commonjs, es2015, ...)
+    "outDir": "./dist",      // Kam umístit zkompilované soubory
+    "rootDir": "./src",      // Kde hledat zdrojové TypeScript soubory
+    "strict": true,          // Zapnout přísnou typovou kontrolu
+    "esModuleInterop": true, // Lepší interoperabilita mezi moduly
+    "skipLibCheck": true,    // Přeskočit kontrolu typů v .d.ts souborech
+    "forceConsistentCasingInFileNames": true // Kontrola správných názvů souborů
+  }
+}</code></pre>
+</section>

@@ -1,0 +1,144 @@
+<section class="chapter-section">
+    <h2>Typovaná pole a n-tice (tuples)</h2>
+    <p>TypeScript nabízí pokročilé možnosti typování polí a n-tic (tuples) pro přesnější kontrolu dat.</p>
+    <pre><code>// Základní typovaná pole
+let cisla: number[] = [1, 2, 3, 4, 5];
+let jmena: Array<string> = ["Jan", "Petr", "Marie"]; // alternativní syntaxe
+
+// Pole s více typy
+let mix: (string | number)[] = [1, "dva", 3, "čtyři"];
+
+// Readonly pole
+const konstantniPole: ReadonlyArray<number> = [1, 2, 3];
+// konstantniPole.push(4); // Error: Property 'push' does not exist on type 'readonly number[]'
+// konstantniPole[0] = 10; // Error: Index signature in type 'readonly number[]' only permits reading
+
+// Vnořená pole
+let matice: number[][] = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];</code></pre>
+
+    <h3>Tuples (n-tice)</h3>
+    <p>Tuple je speciální typ pole s pevnou délkou a předem definovanými typy pro každou pozici.</p>
+    <pre><code>// Základní tuple
+let osoba: [string, number] = ["Jan Novák", 30]; // První prvek musí být string, druhý number
+
+// Lze přiřadit pouze správné typy ve správném pořadí
+// osoba = [30, "Jan Novák"]; // Error: Type 'number' is not assignable to type 'string'
+
+// Volitelné prvky v tuple (s otazníkem)
+let kontakt: [string, string, string?] = ["Jan", "jan@example.com"]; // třetí prvek je volitelný
+kontakt = ["Marie", "marie@example.com", "+420123456789"]; // nebo lze přidat třetí prvek
+
+// Tuple s pojmenovanými prvky (od TypeScript 4.0)
+let uzivatel: [jmeno: string, vek: number, admin?: boolean] = ["Petr", 25];
+
+// Rest operátor v tuple
+type StringNumberBooleans = [string, number, ...boolean[]];
+const data: StringNumberBooleans = ["hello", 42, true, false, true];
+
+// Readonly tuple
+const bod: readonly [number, number] = [10, 20];
+// bod[0] = 5; // Error: Cannot assign to '0' because it is a read-only property</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Použití enum a kdy je vhodný</h2>
+    <p>Enum (výčet) je způsob, jak definovat pojmenované konstanty v TypeScriptu. Je užitečný pro skupiny souvisejících hodnot.</p>
+    <pre><code>// Základní enum - výchozí číselné hodnoty začínají od 0
+enum Smer {
+    Nahoru,    // 0
+    Dolu,      // 1
+    Vlevo,     // 2
+    Vpravo     // 3
+}
+
+function pohybuj(smer: Smer): void {
+    console.log(`Pohyb směrem: ${smer}`);
+}
+
+pohybuj(Smer.Nahoru); // "Pohyb směrem: 0"
+pohybuj(Smer.Vpravo); // "Pohyb směrem: 3"
+
+// Enum s vlastními hodnotami
+enum HttpStatusCode {
+    OK = 200,
+    NotFound = 404,
+    InternalServerError = 500
+}
+
+function zpracujOdpoved(kod: HttpStatusCode): void {
+    if (kod === HttpStatusCode.OK) {
+        console.log("Požadavek byl úspěšný");
+    } else {
+        console.log(`Chyba: ${kod}`);
+    }
+}
+
+zpracujOdpoved(HttpStatusCode.OK); // "Požadavek byl úspěšný"
+
+// String enum - používá řetězce místo čísel
+enum Role {
+    Admin = "ADMIN",
+    User = "USER",
+    Guest = "GUEST"
+}
+
+const uzivatelRole: Role = Role.Admin;
+console.log(`Role: ${uzivatelRole}`); // "Role: ADMIN"
+
+// Heterogenní enum - kombinace čísel a řetězců (méně běžné)
+enum Mix {
+    Id = 1,
+    Nazev = "NAZEV"
+}
+
+// Konstantní enum (s const) - efektivnější generovaný kód
+const enum Dny {
+    Pondeli = 1,
+    Utery,
+    Streda,
+    Ctvrtek,
+    Patek,
+    Sobota,
+    Nedele
+}
+
+const dnesniDen = Dny.Streda;
+console.log(`Dnes je den č. ${dnesniDen}`); // "Dnes je den č. 3"</code></pre>
+
+    <h3>Kdy je enum vhodný?</h3>
+    <p>Enum je užitečný v následujících případech:</p>
+    <ul>
+        <li>Pro reprezentaci omezené sady hodnot (např. dny v týdnu, typy dokumentů)</li>
+        <li>Pro hodnoty, které se nemění (stavy, typy, kategorie)</li>
+        <li>Pro zvýšení čitelnosti kódu pomocí pojmenovaných konstant</li>
+    </ul>
+    
+    <h3>Alternativy k enum</h3>
+    <pre><code>// Union literálů - často preferovaná alternativa k enum
+type SmerType = "nahoru" | "dolu" | "vlevo" | "vpravo";
+
+function pohybujSe(smer: SmerType): void {
+    console.log(`Pohyb směrem: ${smer}`);
+}
+
+pohybujSe("nahoru"); // "Pohyb směrem: nahoru"
+
+// Objekt konstant - další alternativa
+const HttpStatus = {
+    OK: 200,
+    NotFound: 404,
+    InternalServerError: 500
+} as const; // 'as const' dělá hodnoty readonly
+
+type HttpStatusType = typeof HttpStatus[keyof typeof HttpStatus]; // typ: 200 | 404 | 500
+
+function zpracuj(kod: HttpStatusType): void {
+    console.log(`Zpracovávám kód: ${kod}`);
+}
+
+zpracuj(HttpStatus.OK); // "Zpracovávám kód: 200"</code></pre>
+</section>

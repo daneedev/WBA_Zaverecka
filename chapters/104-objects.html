@@ -1,0 +1,170 @@
+<section class="chapter-section">
+    <h2>interface vs type</h2>
+    <p>TypeScript nabízí dva hlavní způsoby definování typů pro objekty: pomocí <code>interface</code> a <code>type</code>.</p>
+    <pre><code>// Interface definice
+interface Uzivatel {
+    id: number;
+    jmeno: string;
+    email: string;
+}
+
+// Type alias definice
+type Uzivatel2 = {
+    id: number;
+    jmeno: string;
+    email: string;
+};
+
+// Obě definice lze použít podobně
+const uzivatel: Uzivatel = {
+    id: 1,
+    jmeno: "Jan Novák",
+    email: "jan@example.com"
+};
+
+const uzivatel2: Uzivatel2 = {
+    id: 2,
+    jmeno: "Marie Nová",
+    email: "marie@example.com"
+};</code></pre>
+
+    <p>Hlavní rozdíly mezi <code>interface</code> a <code>type</code>:</p>
+    <ul>
+        <li>Interface je zaměřen primárně na definování tvarů objektů a lze jej rozšiřovat</li>
+        <li>Type alias je univerzálnější, můžete s ním vytvářet i union typy, primitiva a více</li>
+        <li>Interface se automaticky slučuje při deklaraci stejného jména, type ne</li>
+    </ul>
+</section>
+
+<section class="chapter-section">
+    <h2>Rozšiřování (extends)</h2>
+    <p>Jak interface, tak type můžete rozšiřovat, ale s mírně odlišnou syntaxí.</p>
+    <pre><code>// Rozšíření interface pomocí extends
+interface Osoba {
+    jmeno: string;
+    vek: number;
+}
+
+interface Zamestnanec extends Osoba {
+    pozice: string;
+    plat: number;
+}
+
+// Rozšíření type pomocí průniku typů (&)
+type Uzivatel = {
+    id: number;
+    email: string;
+};
+
+type AdminUzivatel = Uzivatel & {
+    opravneni: string[];
+    jeAdmin: boolean;
+};
+
+// Použití rozšířených typů
+const zamestnanec: Zamestnanec = {
+    jmeno: "Pavel Novotný",
+    vek: 35,
+    pozice: "vývojář",
+    plat: 45000
+};
+
+const admin: AdminUzivatel = {
+    id: 1,
+    email: "admin@firma.cz",
+    opravneni: ["read", "write", "delete"],
+    jeAdmin: true
+};</code></pre>
+
+    <p>Interface může rozšiřovat i type a naopak:</p>
+    <pre><code>// Interface rozšiřuje type
+type ZakladniInfo = {
+    jmeno: string;
+    vek: number;
+};
+
+interface DetailniInfo extends ZakladniInfo {
+    adresa: string;
+    telefon: string;
+}
+
+// Type rozšiřuje interface
+interface ZakladniOpravneni {
+    cteni: boolean;
+    zapis: boolean;
+}
+
+type PlneOpravneni = ZakladniOpravneni & {
+    mazani: boolean;
+    admin: boolean;
+};</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Volitelné a readonly vlastnosti</h2>
+    <p>TypeScript umožňuje definovat volitelné vlastnosti a vlastnosti pouze pro čtení.</p>
+    <pre><code>interface Produkt {
+    id: number;
+    nazev: string;
+    cena: number;
+    skladem?: number;        // volitelná vlastnost (nemusí být uvedena)
+    readonly kod: string;    // vlastnost pouze pro čtení (nelze po vytvoření měnit)
+    popis?: string;          // další volitelná vlastnost
+}
+
+const kniha: Produkt = {
+    id: 1,
+    nazev: "TypeScript pro začátečníky",
+    cena: 299,
+    kod: "TS-12345"
+    // skladem a popis jsou volitelné, nemusí být uvedeny
+};
+
+// Nelze změnit vlastnost pouze pro čtení
+// kniha.kod = "TS-67890"; // Error: Cannot assign to 'kod' because it is a read-only property
+
+// Ale můžeme změnit ostatní vlastnosti
+kniha.cena = 349;
+kniha.skladem = 10; // Můžeme přidat volitelnou vlastnost později</code></pre>
+
+    <p>Pokročilé použití readonly:</p>
+    <pre><code>// Readonly může být aplikován i na celé typy
+type UzivatelData = {
+    id: number;
+    jmeno: string;
+    email: string;
+    nastaveni: {
+        jazyk: string;
+        tema: string;
+    };
+};
+
+// Vytvoření typu, kde všechny vlastnosti jsou pouze pro čtení
+type ReadonlyUzivatel = Readonly<UzivatelData>;
+// Ekvivalent k:
+// type ReadonlyUzivatel = {
+//     readonly id: number;
+//     readonly jmeno: string;
+//     readonly email: string;
+//     readonly nastaveni: {
+//         jazyk: string;
+//         tema: string;
+//     };
+// };
+
+const uzivatel: ReadonlyUzivatel = {
+    id: 1,
+    jmeno: "Jan Novák",
+    email: "jan@example.com",
+    nastaveni: {
+        jazyk: "cs",
+        tema: "svetle"
+    }
+};
+
+// uzivatel.id = 2; // Error: Cannot assign to 'id' because it is a read-only property
+// uzivatel.jmeno = "Jan Svoboda"; // Error
+
+// Nicméně, vnořené objekty nejsou rekurzivně readonly
+uzivatel.nastaveni.tema = "tmave"; // Stále povoleno, pokud nepoužijeme DeepReadonly</code></pre>
+</section>

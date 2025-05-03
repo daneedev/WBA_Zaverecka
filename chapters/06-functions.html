@@ -1,0 +1,67 @@
+<section class="chapter-section">
+    <h2>Deklarace funkcí</h2>
+    <p>V TypeScriptu lze funkce deklarovat několika způsoby, podobně jako v JavaScriptu.</p>
+    <pre><code>// Klasická funkce
+function pozdrav(jmeno: string): string {
+    return `Ahoj, ${jmeno}!`;
+}
+
+// Arrow funkce
+const scitani = (a: number, b: number): number => a + b;
+
+// Funkce jako proměnná
+const nasobeni: (a: number, b: number) => number = function(a, b) {
+    return a * b;
+};</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Parametry a návratové hodnoty</h2>
+    <p>TypeScript umožňuje specifikovat volitelné parametry a výchozí hodnoty.</p>
+    <pre><code>// Volitelný parametr s otazníkem
+function pozvanka(jmeno: string, cas?: string): string {
+    if (cas) {
+        return `Ahoj ${jmeno}, zveme tě na akci v ${cas}.`;
+    } else {
+        return `Ahoj ${jmeno}, zveme tě na naši akci.`;
+    }
+}
+
+// Výchozí hodnota parametru
+function vytvorUzivatele(jmeno: string, vek: number = 18): object {
+    return { jmeno, vek };
+}
+
+console.log(pozvanka("Jan")); // "Ahoj Jan, zveme tě na naši akci."
+console.log(pozvanka("Jana", "15:00")); // "Ahoj Jana, zveme tě na akci v 15:00."
+console.log(vytvorUzivatele("Petr")); // { jmeno: "Petr", vek: 18 }
+console.log(vytvorUzivatele("Marie", 25)); // { jmeno: "Marie", vek: 25 }</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Typy parametrů a návratových hodnot</h2>
+    <p>TypeScript umožňuje přesně specifikovat typy parametrů i návratových hodnot funkcí.</p>
+    <pre><code>// Základní typování funkcí
+function secti(a: number, b: number): number {
+    return a + b;
+}
+
+// Funkce bez návratové hodnoty
+function vypisInformace(zprava: string): void {
+    console.log(`INFO: ${zprava}`);
+}
+
+// Funkce s více možnými návratovými typy
+function prevedHodnotu(hodnota: string | number): string | number {
+    if (typeof hodnota === "string") {
+        return parseInt(hodnota) || 0;
+    } else {
+        return hodnota.toString();
+    }
+}
+
+console.log(secti(5, 3)); // 8
+vypisInformace("Operace dokončena"); // INFO: Operace dokončena
+console.log(prevedHodnotu("123")); // 123 (jako číslo)
+console.log(prevedHodnotu(456)); // "456" (jako řetězec)</code></pre>
+</section>

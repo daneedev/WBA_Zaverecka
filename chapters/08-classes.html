@@ -1,0 +1,77 @@
+<section class="chapter-section">
+    <h2>Základní OOP: třída, konstruktor, metoda</h2>
+    <p>TypeScript plně podporuje objektově orientované programování prostřednictvím tříd, které byly představeny v ES6.</p>
+    <pre><code>// Základní třída
+class Osoba {
+    jmeno: string;
+    vek: number;
+    
+    // Konstruktor - spustí se při vytvoření instance
+    constructor(jmeno: string, vek: number) {
+        this.jmeno = jmeno;
+        this.vek = vek;
+    }
+    
+    // Metoda
+    predstavSe(): string {
+        return `Jmenuji se ${this.jmeno} a je mi ${this.vek} let.`;
+    }
+}
+
+// Vytvoření instance třídy
+const jan = new Osoba("Jan Novák", 30);
+console.log(jan.predstavSe()); // "Jmenuji se Jan Novák a je mi 30 let."</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Vysvětlení klíčových slov public, private</h2>
+    <p>TypeScript přidává možnost nastavit viditelnost vlastností a metod pomocí modifikátorů přístupu.</p>
+    <pre><code>class BankovniUcet {
+    // Veřejná vlastnost - přístupná odkudkoliv
+    public cisloUctu: string;
+    
+    // Soukromá vlastnost - přístupná pouze uvnitř třídy
+    private _zustatek: number;
+    
+    constructor(cisloUctu: string, pocatecniZustatek: number) {
+        this.cisloUctu = cisloUctu;
+        this._zustatek = pocatecniZustatek;
+    }
+    
+    // Veřejná metoda
+    public vlozPenize(castka: number): void {
+        if (castka > 0) {
+            this._zustatek += castka;
+            this.logTransakce(`Vklad: +${castka}`);
+        }
+    }
+    
+    // Veřejná metoda
+    public vyberPenize(castka: number): boolean {
+        if (castka > 0 && castka <= this._zustatek) {
+            this._zustatek -= castka;
+            this.logTransakce(`Výběr: -${castka}`);
+            return true;
+        }
+        return false;
+    }
+    
+    // Veřejný getter
+    public get zustatek(): number {
+        return this._zustatek;
+    }
+    
+    // Soukromá metoda - nelze volat mimo třídu
+    private logTransakce(zprava: string): void {
+        console.log(`Účet ${this.cisloUctu}: ${zprava}, zůstatek: ${this._zustatek}`);
+    }
+}
+
+const ucet = new BankovniUcet("CZ123456789", 1000);
+ucet.vlozPenize(500);
+console.log(`Zůstatek: ${ucet.zustatek} Kč`); // "Zůstatek: 1500 Kč"
+
+// Nelze přistupovat přímo k soukromé vlastnosti/metodě:
+// console.log(ucet._zustatek); // Chyba: Property '_zustatek' is private and only accessible within class 'BankovniUcet'
+// ucet.logTransakce("Test"); // Chyba: Property 'logTransakce' is private and only accessible within class 'BankovniUcet'</code></pre>
+</section>

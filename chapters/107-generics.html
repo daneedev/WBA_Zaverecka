@@ -1,0 +1,177 @@
+<section class="chapter-section">
+    <h2>Co jsou generika a proč je používat</h2>
+    <p>Generické typy (generika) jsou jedním z nejsilnějších nástrojů TypeScriptu, které umožňují vytvářet flexibilní komponenty a funkce, které mohou pracovat s různými typy dat.</p>
+    
+    <h3>Proč používat generika:</h3>
+    <ul>
+        <li><strong>Typová bezpečnost</strong> - umožňuje typovou kontrolu bez ztráty flexibility</li>
+        <li><strong>Znovupoužitelnost kódu</strong> - jedna funkce může pracovat s více typy</li>
+        <li><strong>Žádné typové přetypování</strong> - není třeba používat "as" nebo přetypování</li>
+    </ul>
+
+    <pre><code>// Bez generik - nutnost vytvářet několik funkcí nebo používat 'any'
+function identityAny(arg: any): any {
+    return arg;
+}
+
+// Ztráta typové informace
+const a = identityAny("hello"); // a je typu 'any', ne 'string'
+
+// S generiky - zachování typové bezpečnosti
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+// TypeScript odvodí typ automaticky
+const b = identity("hello"); // b je typu 'string'
+const c = identity(42);      // c je typu 'number'
+const d = identity(true);    // d je typu 'boolean'
+
+// Explicitní specifikace typu
+const e = identity<string>("world"); // e je typu 'string'</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Funkce a třídy s generikem</h2>
+    <p>Generické typy můžete používat s funkcemi, třídami i rozhraními.</p>
+    
+    <h3>Generické funkce</h3>
+    <pre><code>// Generická funkce s několika typy
+function par<T, U>(prvni: T, druhy: U): [T, U] {
+    return [prvni, druhy];
+}
+
+const dvojice = par<string, number>("věk", 30); // dvojice je typu [string, number]
+const jinyPar = par(true, [1, 2, 3]); // TypeScript automaticky odvodí typy: [boolean, number[]]
+
+// Generická funkce s omezením typu
+function delkaArray<T extends { length: number }>(arg: T): number {
+    return arg.length;
+}
+
+const delka1 = delkaArray("Hello"); // string má vlastnost 'length'
+const delka2 = delkaArray([1, 2, 3, 4]); // pole má vlastnost 'length'
+const delka3 = delkaArray({ length: 10, name: "objekt" }); // objekt s vlastností 'length'
+// const delka4 = delkaArray(123); // Chyba: number nemá vlastnost 'length'</code></pre>
+
+    <h3>Generické třídy</h3>
+    <pre><code>// Jednoduchá generická třída
+class Box<T> {
+    private hodnota: T;
+
+    constructor(hodnota: T) {
+        this.hodnota = hodnota;
+    }
+
+    get(): T {
+        return this.hodnota;
+    }
+
+    set(hodnota: T): void {
+        this.hodnota = hodnota;
+    }
+}
+
+// Použití generické třídy
+const boxString = new Box<string>("Hello TypeScript");
+console.log(boxString.get()); // Hello TypeScript
+
+const boxNumber = new Box(123); // TypeScript odvodí typ Box<number>
+boxNumber.set(456);
+console.log(boxNumber.get()); // 456
+
+// Složitější příklad - generická datová struktura
+class Seznam<T> {
+    private prvky: T[] = [];
+
+    pridat(prvek: T): void {
+        this.prvky.push(prvek);
+    }
+
+    odebrat(): T | undefined {
+        return this.prvky.pop();
+    }
+
+    velikost(): number {
+        return this.prvky.length;
+    }
+
+    najdi(predicate: (prvek: T) => boolean): T | undefined {
+        return this.prvky.find(predicate);
+    }
+}
+
+// Použití generické datové struktury
+const cisla = new Seznam<number>();
+cisla.pridat(1);
+cisla.pridat(2);
+cisla.pridat(3);
+
+const sudeCislo = cisla.najdi(n => n % 2 === 0);
+console.log(sudeCislo); // 2</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Generická rozhraní a omezení typů</h2>
+    <p>Generické typy můžete používat také v rozhraních a můžete definovat omezení, jaké typy lze použít.</p>
+    <pre><code>// Generické rozhraní
+interface Pair<T, U> {
+    prvni: T;
+    druhy: U;
+}
+
+// Použití generického rozhraní
+const dvojice1: Pair<number, string> = { prvni: 1, druhy: "jedna" };
+const dvojice2: Pair<boolean, Date> = { prvni: true, druhy: new Date() };
+
+// Generické rozhraní pro reakci API
+interface ApiResponse<T> {
+    data: T;
+    status: number;
+    message: string;
+    timestamp: Date;
+}
+
+interface User {
+    id: number;
+    username: string;
+    email: string;
+}
+
+const userResponse: ApiResponse<User> = {
+    data: { 
+        id: 1, 
+        username: "jannovak", 
+        email: "jan@example.com" 
+    },
+    status: 200,
+    message: "OK",
+    timestamp: new Date()
+};
+
+// Omezení typů v generikách
+interface HasId {
+    id: number;
+}
+
+// T musí obsahovat vlastnost id: number
+function getById<T extends HasId>(items: T[], id: number): T | undefined {
+    return items.find(item => item.id === id);
+}
+
+const users: User[] = [
+    { id: 1, username: "user1", email: "user1@example.com" },
+    { id: 2, username: "user2", email: "user2@example.com" }
+];
+
+const foundUser = getById(users, 2);
+console.log(foundUser); // { id: 2, username: "user2", email: "user2@example.com" }
+
+// Více omezení pomocí průniku
+function merge<T extends object, U extends object>(obj1: T, obj2: U): T & U {
+    return { ...obj1, ...obj2 };
+}
+
+const merged = merge({ name: "Jan" }, { age: 30 });
+console.log(merged); // { name: "Jan", age: 30 }</code></pre>
+</section>

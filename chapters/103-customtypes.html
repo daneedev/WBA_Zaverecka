@@ -51,3 +51,92 @@ let uzivatelStav: Stav = "aktivni";</code></pre>
 
 let mojeRole: Role = Role.Admin;</code></pre>
 </section>
+
+<section class="chapter-section">
+    <h2>Typování parametrů a návratových hodnot</h2>
+    <p>V pokročilých TypeScript projektech je důležité důkladně typovat funkce pro maximální bezpečnost kódu.</p>
+    <pre><code>// Základní typovaná funkce
+function secti(a: number, b: number): number {
+    return a + b;
+}
+
+// Arrow funkce s typy
+const odecti = (a: number, b: number): number => a - b;
+
+// Funkce jako typ
+type MatematickaOperace = (a: number, b: number) => number;
+
+const nasobeni: MatematickaOperace = (a, b) => a * b;
+const deleni: MatematickaOperace = (a, b) => a / b;</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Volitelné a výchozí parametry</h2>
+    <p>TypeScript umožňuje pokročilé možnosti práce s parametry funkcí.</p>
+    <pre><code>// Volitelný parametr (s otazníkem)
+function pozdrav(jmeno: string, titul?: string): string {
+    if (titul) {
+        return `Dobrý den, ${titul} ${jmeno}!`;
+    }
+    return `Ahoj, ${jmeno}!`;
+}
+
+pozdrav("Novák"); // "Ahoj, Novák!"
+pozdrav("Novák", "Ing."); // "Dobrý den, Ing. Novák!"
+
+// Výchozí parametr
+function vytvorUzivatele(jmeno: string, role: string = "uživatel", vek?: number) {
+    return {
+        jmeno,
+        role,
+        vek: vek !== undefined ? vek : null
+    };
+}
+
+vytvorUzivatele("Anna"); // { jmeno: "Anna", role: "uživatel", vek: null }
+vytvorUzivatele("Petr", "administrátor", 35); // { jmeno: "Petr", role: "administrátor", vek: 35 }
+
+// Rest parameters (zbývající parametry)
+function soucet(...cisla: number[]): number {
+    return cisla.reduce((prev, curr) => prev + curr, 0);
+}
+
+soucet(1, 2, 3, 4, 5); // 15</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>void a never</h2>
+    <p>TypeScript nabízí speciální typy návratových hodnot pro specifické případy.</p>
+    <pre><code>// Funkce bez návratové hodnoty (void)
+function loguj(zprava: string): void {
+    console.log(`LOG: ${zprava}`);
+    // Bez return nebo return undefined
+}
+
+// Funkce, která nikdy neskončí nebo vždy vyhodí výjimku (never)
+function vyhodChybu(zprava: string): never {
+    throw new Error(zprava);
+}
+
+function nekonecnaCyklus(): never {
+    while (true) {
+        // Něco dělá...
+    }
+}
+
+// Praktické použití never v typových hlídačích
+function zpracujHodnotu(hodnota: string | number) {
+    if (typeof hodnota === "string") {
+        // zpracování řetězce
+        return hodnota.toUpperCase();
+    } else if (typeof hodnota === "number") {
+        // zpracování čísla
+        return hodnota * 2;
+    } else {
+        // Sem by se kód nikdy neměl dostat, pokud se dodržují typy
+        // TypeScript zde vyvozuje, že hodnota je typu never
+        const vysledek: never = hodnota;
+        return vysledek;
+    }
+}</code></pre>
+</section>

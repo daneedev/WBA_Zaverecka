@@ -1,0 +1,46 @@
+<section class="chapter-section">
+    <h2>Aritmetické a logické operátory</h2>
+    <p>TypeScript podporuje všechny standardní operátory JavaScriptu, včetně aritmetických (+, -, *, /, %), porovnávacích (==, ===, !=, !==, >, <, >=, <=) a logických (&&, ||, !).</p>
+    <pre><code>// Aritmetické operátory
+let soucet: number = 5 + 3;     // 8
+let rozdil: number = 10 - 4;    // 6
+let soucin: number = 3 * 4;     // 12
+let podil: number = 20 / 5;     // 4
+let zbytek: number = 10 % 3;    // 1
+
+// Logické operátory
+let a: boolean = true && false; // false (A zároveň)
+let b: boolean = true || false; // true (Nebo)
+let c: boolean = !true;         // false (Negace)</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>if, else, else if</h2>
+    <p>Podmíněné výrazy v TypeScriptu fungují stejně jako v JavaScriptu, ale s výhodou typové kontroly.</p>
+    <pre><code>let vek: number = 18;
+
+if (vek >= 18) {
+    console.log("Jste dospělý.");
+} else if (vek >= 15) {
+    console.log("Jste teenager.");
+} else {
+    console.log("Jste dítě.");
+}</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Typový systém v podmínkách</h2>
+    <p>TypeScript umožňuje využít typový systém i v podmínkách, což je užitečné při práci s různými typy dat.</p>
+    <pre><code>function zpracujHodnotu(hodnota: string | number) {
+    if (typeof hodnota === "string") {
+        // TypeScript nyní ví, že hodnota je string
+        return hodnota.toUpperCase();
+    } else {
+        // TypeScript nyní ví, že hodnota je number
+        return hodnota * 2;
+    }
+}
+
+console.log(zpracujHodnotu("ahoj")); // "AHOJ"
+console.log(zpracujHodnotu(5));      // 10</code></pre>
+</section>

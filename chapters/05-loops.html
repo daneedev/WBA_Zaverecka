@@ -1,0 +1,44 @@
+<section class="chapter-section">
+    <h2>for, while, do...while</h2>
+    <p>TypeScript nabízí stejné cykly jako JavaScript, ale s výhodou typové kontroly.</p>
+    <pre><code>// for cyklus
+for (let i: number = 0; i < 5; i++) {
+    console.log(`Iterace ${i}`);
+}
+
+// while cyklus
+let counter: number = 0;
+while (counter < 3) {
+    console.log(`While cyklus: ${counter}`);
+    counter++;
+}
+
+// do...while cyklus
+let j: number = 0;
+do {
+    console.log(`Do-while cyklus: ${j}`);
+    j++;
+} while (j < 3);</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Práce s číselnými řadami</h2>
+    <p>V TypeScriptu můžeme efektivně pracovat s číselnými řadami pomocí cyklů.</p>
+    <pre><code>// Vytvoření a naplnění pole
+const cisla: number[] = [];
+for (let i: number = 1; i <= 10; i++) {
+    cisla.push(i);
+}
+console.log(cisla); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// Výpočet součtu čísel v poli
+let soucet: number = 0;
+for (const cislo of cisla) {
+    soucet += cislo;
+}
+console.log(`Součet: ${soucet}`); // Součet: 55
+
+// Filtrování sudých čísel
+const sudaCisla: number[] = cisla.filter(cislo => cislo % 2 === 0);
+console.log(sudaCisla); // [2, 4, 6, 8, 10]</code></pre>
+</section>

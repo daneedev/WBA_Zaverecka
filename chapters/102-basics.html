@@ -2,3 +2,89 @@
     <h2>Základy TypeScriptu</h2>
     <p>Velice doporučuji si projít kapitoly pro začátečníky, které jsou zaměřené na základní koncepty TypeScriptu, jako jsou typy, funkce a objekty. Tyto kapitoly ti pomohou pochopit základy TypeScriptu a připraví tě na pokročilejší témata.</p>
 </section>
+
+<section class="chapter-section">
+    <h2>Typy primitiv a složené typy</h2>
+    <p>TypeScript poskytuje širokou škálu typů, od základních až po komplexní složené typy.</p>
+    <pre><code>// Základní primitivní typy
+let retezec: string = "Hello TypeScript";
+let cislo: number = 42;
+let jePravda: boolean = true;
+let nic: null = null;
+let neniDef: undefined = undefined;
+let symbol1: symbol = Symbol("id");
+let velkeCislo: bigint = 100n;
+
+// Složené typy
+let pole: number[] = [1, 2, 3];
+let tuple: [string, number] = ["věk", 30]; // n-tice s pevným počtem hodnot
+let objekt: object = { jmeno: "Jana", vek: 25 };
+
+// any a unknown
+let libovolna: any = "cokoliv"; // Může být cokoliv, zruší typovou kontrolu
+libovolna = 42; // OK
+libovolna = true; // OK
+
+let neznama: unknown = "hodnota"; // Bezpečnější alternativa k any
+// let s: string = neznama; // Chyba: Type 'unknown' is not assignable to type 'string'
+if (typeof neznama === "string") {
+    let s: string = neznama; // OK, nyní je typ ověřený
+}</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Union typy</h2>
+    <p>Union typy umožňují vytvořit typ, který může být jedním z několika různých typů.</p>
+    <pre><code>// Definice union typu
+let id: string | number;
+id = "abc123"; // OK
+id = 456; // OK
+// id = true; // Chyba: Type 'boolean' is not assignable to type 'string | number'
+
+// Praktické použití v funkcích
+function zobrazId(id: string | number): void {
+    console.log(`ID: ${id}`);
+}
+
+function formatujId(id: string | number): string {
+    if (typeof id === "string") {
+        // TypeScript ví, že zde je id typu string
+        return id.toUpperCase();
+    } else {
+        // TypeScript ví, že zde je id typu number
+        return `ID-${id.toFixed(0)}`;
+    }
+}</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Typové aliasy</h2>
+    <p>Typové aliasy umožňují vytvářet vlastní názvy pro typy, což zlepšuje čitelnost a znovupoužitelnost.</p>
+    <pre><code>// Základní typové aliasy
+type UserId = string | number;
+type Koordinaty = [number, number]; // tuple type
+type OsobniInfo = { jmeno: string; vek: number };
+
+// Použití aliasů
+let uzivatelId: UserId = "user_123";
+let poloha: Koordinaty = [50.0755, 14.4378]; // Praha
+let osoba: OsobniInfo = { jmeno: "Tomáš", vek: 28 };
+
+// Složitější aliasy s generickými typy
+type Vysledek<T> = {
+    uspech: boolean;
+    data?: T;
+    chyba?: string;
+};
+
+// Použití složitějšího aliasu
+let vysledekCisel: Vysledek<number[]> = {
+    uspech: true,
+    data: [1, 2, 3, 4]
+};
+
+let chybovaOdpoved: Vysledek<never> = {
+    uspech: false,
+    chyba: "Požadavek selhal"
+};</code></pre>
+</section>

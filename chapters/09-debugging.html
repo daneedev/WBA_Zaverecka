@@ -1,0 +1,60 @@
+<section class="chapter-section">
+    <h2>Typové chyby a jejich čtení</h2>
+    <p>Jednou z hlavních výhod TypeScriptu je schopnost odhalit typové chyby už během vývoje.</p>
+    <pre><code>// Příklad typové chyby
+let jmeno: string = "Anna";
+// jmeno = 123; // Error: Type 'number' is not assignable to type 'string'
+
+// Nesprávné použití funkce
+function secti(a: number, b: number): number {
+    return a + b;
+}
+// secti("5", 10); // Error: Argument of type 'string' is not assignable to parameter of type 'number'
+// let vysledek: string = secti(5, 10); // Error: Type 'number' is not assignable to type 'string'</code></pre>
+</section>
+
+<section class="chapter-section">
+    <h2>Jak najít a opravit chyby</h2>
+    <p>TypeScript poskytuje detailní informace o chybách a návrhy řešení.</p>
+    <pre><code>// Chybějící vlastnost v objektu
+interface Osoba {
+    jmeno: string;
+    vek: number;
+    email: string;
+}
+
+// Chyba: Property 'email' is missing in type '{ jmeno: string; vek: number; }' but required in type 'Osoba'
+// let uzivatel: Osoba = {
+//     jmeno: "Jan",
+//     vek: 30
+// };
+
+// Správná implementace
+let uzivatel: Osoba = {
+    jmeno: "Jan",
+    vek: 30,
+    email: "jan@example.com"
+};
+
+// Použití debuggeru
+function slozitaFunkce(data: number[]): number {
+    let suma = 0;
+    // Můžeme přidat breakpoint pomocí debugger;
+    for (let i = 0; i < data.length; i++) {
+        // debugger; // Zde se zastaví vykonávání programu v debuggeru
+        suma += data[i];
+    }
+    return suma;
+}
+
+// Kontrola typu v runtime
+function zpracujHodnotu(data: any): string {
+    if (typeof data === "string") {
+        return data.toUpperCase();
+    } else if (typeof data === "number") {
+        return data.toString();
+    } else {
+        throw new Error(`Nepodporovaný typ: ${typeof data}`);
+    }
+}</code></pre>
+</section>
