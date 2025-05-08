@@ -235,6 +235,8 @@ main {
     padding: 20px;
     border-radius: 10px;
     min-width: 20%;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 
 .chapter-selection ul {
@@ -244,6 +246,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    overflow-y: auto;
 }
 
 .chapter-selection a {
@@ -442,6 +445,7 @@ footer p {
     .chapter-selection {
         width: 80%;
         padding: 10px;
+        max-height: 30vh;
     }
     .chapter-selection ul {
         display: grid;
@@ -450,7 +454,7 @@ footer p {
         width: 100%;
     }
     .chapter-container {
-        max-width: 80%;
+        width: 80%;
     }
 }
 
