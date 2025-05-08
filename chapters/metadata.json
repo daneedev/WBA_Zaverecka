@@ -126,14 +126,6 @@
       "level": "advanced",
       "description": "V této kapitole se dozvíte, jak používat typové strážce a predikáty pro bezpečnou práci s různými typy dat.",
       "prev": "105-arrays-tuples-enums",
-      "next": "107-generics"
-    },
-    {
-      "id": "107-generics",
-      "title": "Generické typy (Generics)",
-      "level": "advanced",
-      "description": "V této kapitole se dozvíte o generických typech a jak je používat pro vytváření flexibilních a typově bezpečných funkcí a tříd.",
-      "prev": "106-type-guards",
       "next": null
     }
   ]
