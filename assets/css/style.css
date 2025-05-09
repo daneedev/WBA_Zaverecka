@@ -105,13 +105,18 @@ main {
     border: 2px solid #007ACC;
 }
 
-.blue:hover, .yellow:hover {
+.blue:hover, .yellow:hover, .green:hover {
     background-color: transparent;
 }
 
 .yellow {
     background-color: #c6b218;
     border: 2px solid #c6b218;
+}
+
+.green {
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
 }
 
 .hamburger-btn, .hamburger-menu {
@@ -403,6 +408,30 @@ footer a:hover {
 footer p {
     color: #fff;
     font-size: 16px;
+}
+
+.card h3 {
+    color: #fff;
+    padding: 5px;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.card ul li {
+    margin: 0.7rem 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card ul li i {
+    color: #3178c6;
+    margin-right: 0.5rem;
 }
 
 @media (max-width: 850px) {
